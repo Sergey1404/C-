@@ -1,0 +1,58 @@
+/*************************************
+* Автор: Тупиленко С.Д.              *
+* Дата: 11.11.2021                   *
+* Название: Календарь в консоли      *
+*************************************/
+https://onlinegdb.com/tZDU_21ox
+#include <iostream>
+ 
+using namespace std;
+ 
+int countMonth(int startDay, int daysNumber, char* name) {
+    cout << "Пн\tВт\tСр\tЧт\tПт\tСб\tВс" << endl;
+    for (int i = 1; i < startDay; i++)
+        cout << "\t";
+    for (int i = 1; i <= daysNumber; i++)
+    {
+        cout << i << "\t";
+        if ((startDay + i) % 7 == 1)
+            cout << endl;
+    }
+    cout << endl;
+    cout << endl;
+    startDay = (startDay+daysNumber)%7;
+    if (startDay==0)
+        startDay = 7;
+    return startDay;
+}
+ 
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+ 
+    int a, b, Feb, i;
+    cout << "является ли год високосным? (0-нет; 1-да):";
+    cin >> a;
+    if (a == 1)
+        Feb = 29;
+    else
+        Feb = 28;
+ 
+    cout << "Введите с какого дня недели начинается Январь (1-7 = пн-вс):";
+    cin >> b;
+    cout << endl;
+ 
+    b = countMonth(b, 31, "Январь");
+    b = countMonth(b, Feb, "Февраль");
+    b = countMonth(b, 31, "Март");
+    b = countMonth(b, 30, "Апрель");
+    b = countMonth(b, 31, "Май");
+    b = countMonth(b, 30, "Июнь");
+    b = countMonth(b, 31, "Июль");
+    b = countMonth(b, 31, "Август");
+    b = countMonth(b, 30, "Сентябрь");
+    b = countMonth(b, 31, "Октябрь");
+    b = countMonth(b, 30, "Ноябрь");
+    b = countMonth(b, 31, "Декабрь");
+    system("pause");
+}
