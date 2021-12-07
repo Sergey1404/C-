@@ -1,5 +1,4 @@
-Написать программу перевода числа из арабских цифр в число из римских цифр. и обратно
-https://onlinegdb.com/giIzd9Iww
+https://onlinegdb.com/NUmUfnVLY
 /*******************************
 * Автор: Тупиленко С.Д.        *
 * Дата: 20.11.2021             *
@@ -16,11 +15,15 @@ int main() {
     switch (v) {
         case 1: {
             cout << "введите число (1-3999) арабскими цифрами: "; cin >> arab;
-            if (arab <= 0 || arab > 3999) cout << 
-               "ошибка ввода, проверьте вводимое число" << endl << endl;
-            else if (arab == 3999) cout << "MMMIM" << endl << endl;
-            else if (arab == 2999) cout << "MMIM" << endl << endl;
-            else if (arab == 1999) cout << "MIM" << endl << endl;
+            if (arab <= 0 || arab > 3999) {
+                cout << "ошибка ввода, проверьте вводимое число" << endl << endl;
+            } else if (arab == 3999) {
+                cout << "MMMIM" << endl << endl;
+            } else if (arab == 2999) {
+                cout << "MMIM" << endl << endl;
+            } else if (arab == 1999) {
+                cout << "MIM" << endl << endl;
+            }
             else {
                 mid = arab;
                 while (mid >= 1000) {
@@ -57,25 +60,46 @@ int main() {
                 if (mid >= 1) I++;
                 mid -= 1;
             }
-            for (i = 1; i <= M; i++) cout << "M";
-                if (D == 1 && C == 4) cout << "CM";
-            else if (D == 0 && C == 4) cout << "CD";
-                else {
-                    for (i = 1; i <= D; i++) cout << "D";
-                    for (i = 1; i <= C; i++) cout << "C";
+            for (i = 1; i <= M; i++) {
+                cout << "M";
+                if (D == 1 && C == 4) {
+                    cout << "CM";
+                } else if (D == 0 && C == 4) {
+                    cout << "CD";
+                } else {
+                    for (i = 1; i <= D; i++) {
+                        cout << "D";
                     }
-                if (L == 1 && X == 4) cout << "XC";
-                    else if (L == 0 && X == 4) cout << "XL";
-                else {
-                    for (i = 1; i <= L; i++) cout << "L";
-                    for (i = 1; i <= X; i++) cout << "X";
+                    for (i = 1; i <= C; i++) {
+                        cout << "C";
                     }
-                    if (V == 1 && I == 4) cout << "IX";
-                else {
-                    for (i = 1; i <= V; i++) cout << "V";
-                    if (I == 4) cout << "IV";
-                    else for (i = 1; i <= I; i++) cout << "I";
                 }
+                if (L == 1 && X == 4) {
+                    cout << "XC";
+                    } else if (L == 0 && X == 4) {
+                        cout << "XL";
+                    } else {
+                    for (i = 1; i <= L; i++) {
+                        cout << "L";
+                    } for (i = 1; i <= X; i++) {
+                        cout << "X";
+                    }
+                    }
+                    if (V == 1 && I == 4) {
+                        cout << "IX";
+                    }
+                else {
+                    for (i = 1; i <= V; i++) {
+                        cout << "V";
+                        if (I == 4) {
+                            cout << "IV";
+                        }
+                        else for (i = 1; i <= I; i++) {
+                            cout << "I";
+                        }
+                    }
+                }
+            }
             cout << endl << endl;
             }
         }
@@ -95,7 +119,6 @@ int main() {
             std::cout << "Арабское число: "<< numb_arab;
         }
         break;
-        default: cout << "Неверный выбор" << endl;
     }
     return 0;
 }
