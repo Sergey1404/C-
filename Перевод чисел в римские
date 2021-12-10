@@ -27,79 +27,74 @@ int main() {
             else {
                 mid = arab;
                 while (mid >= 1000) {
-                if (mid >= 1000) M++;
-                mid -= 1000;
-                }
+                if (mid >= 1000) {
+                    M++;
+                } mid -= 1000;
+            }
             mid = arab - M * 1000;
             while (mid >= 500) {
-                if (mid >= 500) D++;
-                mid -= 500;
-                }
+                if (mid >= 500) {
+                    D++;
+                } mid -= 500;
+            }
             mid = arab - M * 1000 - D * 500;
             while (mid >= 100) {
-                if (mid >= 100) C++;
-                mid -= 100;
+                if (mid >= 100) {
+                    C++;
+                } mid -= 100;
             }
             mid = arab - M * 1000 - D * 500 - C * 100;
             while (mid >= 50) {
-                if (mid >= 50) L++;
-                mid -= 50;
+                if (mid >= 50) {
+                    L++;
+                } mid -= 50;
             }
             mid = arab - M * 1000 - D * 500 - C * 100 - L * 50;
             while (mid >= 10) {
-                if (mid >= 10) X++;
-                mid -= 10;
+                if (mid >= 10) {
+                    X++;
+                } mid -= 10;
             }
             mid = arab - M * 1000 - D * 500 - C * 100 - L * 50 - X * 10;
             while (mid >= 5) {
-                if (mid >= 5) V++;
-                mid -= 5;
+                if (mid >= 5) {
+                    V++;
+                } mid -= 5;
             }
             mid = arab - M * 1000 - D * 500 - C * 100 - L * 50 - X * 10 - V * 5;
             while (mid >= 1) {
-                if (mid >= 1) I++;
-                mid -= 1;
+                if (mid >= 1) {
+                    I++;
+                } mid -= 1;
             }
-            for (i = 1; i <= M; i++) {
+            for (i = 1; i <= M; i++)
                 cout << "M";
-                if (D == 1 && C == 4) {
+                if (D == 1 && C == 4)
                     cout << "CM";
-                } else if (D == 0 && C == 4) {
+                else if (D == 0 && C == 4)
                     cout << "CD";
-                } else {
-                    for (i = 1; i <= D; i++) {
+                else
+                    for (i = 1; i <= D; i++)
                         cout << "D";
-                    }
-                    for (i = 1; i <= C; i++) {
+                    for (i = 1; i <= C; i++)
                         cout << "C";
-                    }
-                }
-                if (L == 1 && X == 4) {
+                if (L == 1 && X == 4)
                     cout << "XC";
-                    } else if (L == 0 && X == 4) {
+                   else if (L == 0 && X == 4)
                         cout << "XL";
-                    } else {
-                    for (i = 1; i <= L; i++) {
+                   else for (i = 1; i <= L; i++)
                         cout << "L";
-                    } for (i = 1; i <= X; i++) {
+                    for (i = 1; i <= X; i++)
                         cout << "X";
-                    }
-                    }
-                    if (V == 1 && I == 4) {
+                    if (V == 1 && I == 4)
                         cout << "IX";
-                    }
-                else {
-                    for (i = 1; i <= V; i++) {
+                else
+                    for (i = 1; i <= V; i++)
                         cout << "V";
-                        if (I == 4) {
+                       if (I == 4)
                             cout << "IV";
-                        }
-                        else for (i = 1; i <= I; i++) {
+                       else for (i = 1; i <= I; i++)
                             cout << "I";
-                        }
-                    }
-                }
-            }
             cout << endl << endl;
             }
         }
