@@ -1,67 +1,55 @@
 Задача о восьми ферзях. Необходимо расставить на шахматной доске восемь ферзей так, чтобы ни один из них не угрожал другому. 
 Составить программу, находящую все решения этой задачи. Программа должна выводить общее количество возможных решений.
-https://onlinegdb.com/OZJCFX6rl
+https://onlinegdb.com/n_Lm9isJa
 #include <iostream>
 using namespace std;
-
 const int size = 8;
- 
 int board[size][size];
 int temp = 0, resultCount = 0;
- 
 void showBoard() {
-    for(int vertical = 0; vertical < size; ++vertical) {
-      for(int horizontal = 0; horizontal < size; ++horizontal) {
-        cout << ((board[vertical][horizontal]) ? "Ф " : "0 ");
-      }
-      cout << '\n';
+    for (int vertical = 0; vertical < size; ++vertical) {
+      for (int horizontal = 0; horizontal < size; ++horizontal) {
+        cout << ((board[vertical][horizontal]) ? "Ф " : "[] ");
+      } cout << '\n';
     }
 }
- 
 // Функция tryQueen() - проверяет нет ли уже установленных ферзей,
 bool tryQueen(int vertical, int horizontal) {
-    for(int i = 0; i < vertical; ++i) {
-      if(board[i][horizontal]) {
+    for (int cell = 0; cell < vertical; ++cell) {
+      if (board[cell][horizontal]) {
         return false;
       }
     }
-    
-    for(int i = 1; i <= vertical && horizontal-i >= 0; ++i) {
-      if(board[vertical-i][horizontal-i]) {
+    for (int cell = 1; cell <= vertical && horizontal-cell >= 0; ++cell) {
+      if (board[vertical-cell][horizontal-cell]) {
         return false;
       }
     }
-    
-    for(int i = 1; i <= vertical && horizontal+i < size; i++) {
-      if(board[vertical-i][horizontal+i]) {
+    for (int cell = 1; cell <= vertical && horizontal+cell < size; ++cell) {
+      if (board[vertical-cell][horizontal+cell]) {
         return false;
       }
     }
     return true;
 }
- 
 // Функция setQueen() - пробует найти результаты решений.
 void setQueen(int vertical) { 
-    if(vertical == size) {
-      
+    if (vertical == size) {
       ++resultCount;
-      if(resultCount == temp) {
+      if (resultCount == temp) {
           showBoard();
       }
       return;
-      
     }
-    for(int i = 0; i < size; ++i) {
-      if(tryQueen(vertical, i)) {
-        board[vertical][i] = 1;
+    for (int cell = 0; cell < size; ++cell) {
+      if (tryQueen(vertical, cell)) {
+        board[vertical][cell] = 1;
         setQueen(vertical+1);
-        board[vertical][i] = 0;
+        board[vertical][cell] = 0;
       }
     }
-    
     return; 
 }
- 
 int main() {
     setlocale(LC_ALL, "Russian");
     cout << "Введите номер решения: ";
