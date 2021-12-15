@@ -5,115 +5,345 @@ https://onlinegdb.com/NUmUfnVLY
 * Название: Перевод чисел      *
 ********************************/
 #include <iostream>
+#include <string>
+#include <iomanip>
+#include <cmath> 
+#include <vector>
+#include <cstring>
 using namespace std;
-int main() {
-    setlocale(LC_ALL,"Russian");
-    int arab, M = 0, D = 0, C = 0, L = 0, X = 0, V = 0, I = 0, mid = 0, i, v, a, numb_arab = 0;
-    char numb_rome;
-    cout << "1 - Из арабских чисел в римские, 2 - из римских в арабские: ";
-    cin >> v;
-    switch (v) {
-        case 1: {
-            cout << "введите число (1-3999) арабскими цифрами: "; cin >> arab;
-            if (arab <= 0 || arab > 3999) {
-                cout << "ошибка ввода, проверьте вводимое число" << endl << endl;
-            } else if (arab == 3999) {
-                cout << "MMMIM" << endl << endl;
-            } else if (arab == 2999) {
-                cout << "MMIM" << endl << endl;
-            } else if (arab == 1999) {
-                cout << "MIM" << endl << endl;
-            }
-            else {
-                mid = arab;
-                while (mid >= 1000) {
-                if (mid >= 1000) {
-                    M++;
-                } mid -= 1000;
-            }
-            mid = arab - M * 1000;
-            while (mid >= 500) {
-                if (mid >= 500) {
-                    D++;
-                } mid -= 500;
-            }
-            mid = arab - M * 1000 - D * 500;
-            while (mid >= 100) {
-                if (mid >= 100) {
-                    C++;
-                } mid -= 100;
-            }
-            mid = arab - M * 1000 - D * 500 - C * 100;
-            while (mid >= 50) {
-                if (mid >= 50) {
-                    L++;
-                } mid -= 50;
-            }
-            mid = arab - M * 1000 - D * 500 - C * 100 - L * 50;
-            while (mid >= 10) {
-                if (mid >= 10) {
-                    X++;
-                } mid -= 10;
-            }
-            mid = arab - M * 1000 - D * 500 - C * 100 - L * 50 - X * 10;
-            while (mid >= 5) {
-                if (mid >= 5) {
-                    V++;
-                } mid -= 5;
-            }
-            mid = arab - M * 1000 - D * 500 - C * 100 - L * 50 - X * 10 - V * 5;
-            while (mid >= 1) {
-                if (mid >= 1) {
-                    I++;
-                } mid -= 1;
-            }
-            for (i = 1; i <= M; i++)
-                cout << "M";
-                if (D == 1 && C == 4)
-                    cout << "CM";
-                else if (D == 0 && C == 4)
-                    cout << "CD";
-                else
-                    for (i = 1; i <= D; i++)
-                        cout << "D";
-                    for (i = 1; i <= C; i++)
-                        cout << "C";
-                if (L == 1 && X == 4)
-                    cout << "XC";
-                   else if (L == 0 && X == 4)
-                        cout << "XL";
-                   else for (i = 1; i <= L; i++)
-                        cout << "L";
-                    for (i = 1; i <= X; i++)
-                        cout << "X";
-                    if (V == 1 && I == 4)
-                        cout << "IX";
-                else
-                    for (i = 1; i <= V; i++)
-                        cout << "V";
-                       if (I == 4)
-                            cout << "IV";
-                       else for (i = 1; i <= I; i++)
-                            cout << "I";
-            cout << endl << endl;
-            }
+typedef struct {
+    char chNumber;
+    int intNumber;
+} roman_t;
+vector <roman_t> RomanNumeral;
+typedef struct {
+  string strNumber;
+  int intNumber;
+} manyCharacter;
+vector <manyCharacter> allRomanNumeral;
+void listOfRomanNumeralWithOneCharacter(){
+   RomanNumeral.push_back({'I',1}); 
+   RomanNumeral.push_back({'V',5}); 
+   RomanNumeral.push_back({'X',10}); 
+   RomanNumeral.push_back({'L',50}); 
+   RomanNumeral.push_back({'C',100}); 
+   RomanNumeral.push_back({'D',500}); 
+   RomanNumeral.push_back({'M',1000}); 
+
+}
+void listOfRomanNumeralWithManyCharacter () {
+  allRomanNumeral.push_back({"I",1}); 
+  allRomanNumeral.push_back({"II",2}); 
+  allRomanNumeral.push_back({"III",3});
+  allRomanNumeral.push_back({"V",5}); 
+  allRomanNumeral.push_back({"IV",4}); 
+  allRomanNumeral.push_back({"VI",6}); 
+  allRomanNumeral.push_back({"VII",7}); 
+  allRomanNumeral.push_back({"VIII",8}); 
+  allRomanNumeral.push_back({"IX",9});
+  allRomanNumeral.push_back({"X",10}); 
+  allRomanNumeral.push_back({"XX",20}); 
+  allRomanNumeral.push_back({"XXX",30}); 
+  allRomanNumeral.push_back({"XL",40});
+  allRomanNumeral.push_back({"L",50}); 
+  allRomanNumeral.push_back({"LX",60}); 
+  allRomanNumeral.push_back({"LXX",70}); 
+  allRomanNumeral.push_back({"LXXX",80}); 
+  allRomanNumeral.push_back({"L",50}); 
+  allRomanNumeral.push_back({"XC",90});
+  allRomanNumeral.push_back({"C",100}); 
+  allRomanNumeral.push_back({"CС",200}); 
+  allRomanNumeral.push_back({"CСС",300}); 
+  allRomanNumeral.push_back({"CD",400});
+  allRomanNumeral.push_back({"D",500}); 
+  allRomanNumeral.push_back({"DC",600}); 
+  allRomanNumeral.push_back({"DCC",700}); 
+  allRomanNumeral.push_back({"DCCC",800}); 
+  allRomanNumeral.push_back({"СM",900});
+  allRomanNumeral.push_back({"M",1000}); 
+  allRomanNumeral.push_back({"MM",2000}); 
+  allRomanNumeral.push_back({"MMM",3000});
+}
+void menu() {
+  cout << "\t\t\tMenu" << endl;
+  cout << "1 - Преобразование арабских цифр в римские цифры" << endl;
+  cout << "2 - Преобразование римских цифр в арабские цифры" << endl;
+  cout << "3 - Выход" << endl;
+}
+void convertArabicNumeralsToRomanNumerals(string arabicNumber) {
+    listOfRomanNumeralWithManyCharacter();
+    int romanDigit = 0, degree=0;
+    string romanNumber;
+    for (int character = arabicNumber.length()-1; character>=0; --character){
+      if (arabicNumber[character] == '0'){
+        ++degree; 
+        continue;
+      }
+           int powM = pow(10,degree);
+           char text =  arabicNumber[character]; 
+           int num = text - '0';
+           romanDigit = num * powM ;
+      ++degree;
+      for (int arrIndex=0; arrIndex < allRomanNumeral.size(); ++arrIndex) {
+          if (allRomanNumeral[arrIndex].intNumber==romanDigit){
+              romanNumber = allRomanNumeral[arrIndex].strNumber+romanNumber;
+              break;
+          }
+      }
+    } 
+    cout << "\nАрабская цифра "<<arabicNumber<<" равна римской цифре "<<romanNumber<< ".\n\n"; 
+}
+void convertRomanNumeralsToArabicNumerals(string RomanNumber) {
+  listOfRomanNumeralWithOneCharacter();
+  int number = 0, num = 0;
+  for (int symbol = 0; RomanNumber[symbol]; ++symbol) {
+    for (int arrIndex = 0; arrIndex < RomanNumeral.size(); ++arrIndex) {
+      if (RomanNumeral[arrIndex].chNumber == RomanNumber[symbol]) {
+        if (number < RomanNumeral[arrIndex].intNumber && number != 0) {
+          num = num - number + RomanNumeral[arrIndex].intNumber - number;
+        } else {
+          num += RomanNumeral[arrIndex].intNumber;
+          number = RomanNumeral[arrIndex].intNumber;
         }
         break;
-        case 2: {
-            std::cout<<"Введите римское число: ";
-            cin >> numb_rome;
-                switch (numb_rome) {
-                    case 'M': case 'm': numb_arab+=1000; break;
-                    case 'D': case 'd': numb_arab+=500; break;
-                    case 'C': case 'c': numb_arab+=100; break;
-                    case 'L': case 'l': numb_arab+=50; break;
-                    case 'X': case 'x': numb_arab+=10; break;
-                    case 'V': case 'v': numb_arab+=5; break;
-                    case 'I': case 'i': numb_arab++; break;
-                }
-            std::cout << "Арабское число: "<< numb_arab;
-        }
-        break;
+      }
     }
-    return 0;
+  }
+  cout << "Римская цифра " << RomanNumber << " равна арабской цифре " << num << ".\n\n";
+}
+string inputRoman() {
+  cout << endl;
+  string romanNumber;
+  cout << "Введите римские цифры: ";
+  cin >> romanNumber;
+  return romanNumber;
+}
+string inputArabic(){
+    cout << endl;
+    string arabicNumber;
+    cout << "Введите арабские цифры: ";
+    cin >> arabicNumber;
+    return arabicNumber;
+}
+void outputAnInvalidRomanNumber(string romanNumber) {
+  system("clear");
+  cout << "\t\t\t\tПреобразование римских цифр в арабские цифры\n\n";
+  cout << romanNumber << " - является неправильное число!" << endl;
+  cout << "Введите корректное число!" << endl;
+}
+void outputAnInvalidArabicNumber(string arabicNumber) {
+  system("clear");
+  cout << "\t\t\t\tПреобразование арабских цифр в римские цифры\n\n";
+  cout << arabicNumber << " - является неправильное число!" << endl;
+  cout << "Введите корректное число!" << endl;
+}
+bool verificationOfTheEnteredRomanDigit(string romanNumber) {
+  bool digit = true;
+  listOfRomanNumeralWithOneCharacter();
+  vector < roman_t > listOfNumbersOnText;
+  for (int symbol = 0; romanNumber[symbol]; ++symbol) {
+    for (int arrIndex = 0; arrIndex < RomanNumeral.size(); ++arrIndex) {
+      if (RomanNumeral[arrIndex].chNumber == romanNumber[symbol]) {
+        listOfNumbersOnText.push_back({
+          RomanNumeral[arrIndex].chNumber,
+          RomanNumeral[arrIndex].intNumber
+        });
+        break;
+      }
+    }
+    if (symbol == romanNumber.length() - 1 && 
+        romanNumber.length() != listOfNumbersOnText.size()) {
+      outputAnInvalidRomanNumber(romanNumber);
+      digit = false;
+      return digit;
+    }
+  }
+  if (listOfNumbersOnText[0].intNumber == 1 &&
+    (listOfNumbersOnText[2].intNumber == 100 ||
+      listOfNumbersOnText[2].intNumber == 500 ||
+      listOfNumbersOnText[2].intNumber == 1000)) {
+    digit = false;
+    outputAnInvalidRomanNumber(romanNumber);
+    cout << 1 << endl;
+  } else if (listOfNumbersOnText[1].intNumber == 10 &&
+    (listOfNumbersOnText[2].intNumber == 500 ||
+      listOfNumbersOnText[2].intNumber == 1000)) {
+    outputAnInvalidRomanNumber(romanNumber);
+    cout << 2 << endl;
+    digit = false;
+  } else if (romanNumber.length() >= 4 &&
+    listOfNumbersOnText[2].intNumber >= 1 &&
+    listOfNumbersOnText[2].intNumber != listOfNumbersOnText[1].intNumber &&
+    (listOfNumbersOnText[4].intNumber >= 1 &&
+      listOfNumbersOnText[3].intNumber != listOfNumbersOnText[2].intNumber) &&
+    listOfNumbersOnText[3].intNumber != listOfNumbersOnText[4].intNumber &&
+    listOfNumbersOnText[4].intNumber != 0) {
+    outputAnInvalidRomanNumber(romanNumber);
+    digit = false;
+  } else {
+    for (int arrIndex = 0; arrIndex < listOfNumbersOnText.size(); ++arrIndex) {
+      if (arrIndex + 2 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber != listOfNumbersOnText[arrIndex + 1].intNumber &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == listOfNumbersOnText[arrIndex + 2].intNumber &&
+        listOfNumbersOnText[arrIndex + 1].intNumber != 1 &&
+        listOfNumbersOnText[arrIndex + 2].intNumber == listOfNumbersOnText[arrIndex + 1].intNumber &&
+        listOfNumbersOnText[arrIndex + 1].intNumber != 10 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber != 100 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber != 1000) {
+        outputAnInvalidRomanNumber(romanNumber);
+        digit = false;
+      } else if (arrIndex + 3 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber == 1 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == 1 &&
+        listOfNumbersOnText[arrIndex + 2].intNumber == 1 &&
+        listOfNumbersOnText[arrIndex + 3].intNumber == 1) {
+        outputAnInvalidRomanNumber(romanNumber);
+        digit = false;
+        cout << "Число " << listOfNumbersOnText[arrIndex].chNumber <<
+          " нельзя повторить 4 раза!!" << endl;
+      } else if (arrIndex + 1 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber == 5 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == 5) {
+        outputAnInvalidRomanNumber(romanNumber);
+        digit = false;
+        cout << "Число " << listOfNumbersOnText[arrIndex].chNumber <<
+          " нельзя повторить 2 раза!!" << endl;
+      } else if (arrIndex + 3 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber == 10 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == 10 &&
+        listOfNumbersOnText[arrIndex + 2].intNumber == 10 &&
+        listOfNumbersOnText[arrIndex + 3].intNumber == 10) {
+        outputAnInvalidRomanNumber(romanNumber);
+        digit = false;
+        cout << "Число " << listOfNumbersOnText[arrIndex].chNumber <<
+          " нельзя повторить 4 раза!!" << endl;
+      } else if (arrIndex + 1 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber == 50 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == 50) {
+        outputAnInvalidRomanNumber(romanNumber);
+        digit = false;
+        cout << "Число " << listOfNumbersOnText[arrIndex].chNumber <<
+          " нельзя повторить 2 раза!!" << endl;
+      } else if (arrIndex + 3 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber == 100 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == 100 &&
+        listOfNumbersOnText[arrIndex + 2].intNumber == 100 &&
+        listOfNumbersOnText[arrIndex + 3].intNumber == 100) {
+        outputAnInvalidRomanNumber(romanNumber);
+        digit = false;
+        cout << "Число " << listOfNumbersOnText[arrIndex].chNumber <<
+          " нельзя повторить 4 раза!!" << endl;
+      } else if (arrIndex + 1 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber == 500 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == 500) {
+        outputAnInvalidRomanNumber(romanNumber);
+        digit = false;
+        cout << "Число " << listOfNumbersOnText[arrIndex].chNumber <<
+          " нельзя повторить 2 раза!!" << endl;
+      } else if (arrIndex + 3 < listOfNumbersOnText.size() &&
+        listOfNumbersOnText[arrIndex].intNumber == 1000 &&
+        listOfNumbersOnText[arrIndex + 1].intNumber == 1000 &&
+        listOfNumbersOnText[arrIndex + 2].intNumber == 1000 &&
+        listOfNumbersOnText[arrIndex + 3].intNumber == 1000) {
+        outputAnInvalidRomanNumber(romanNumber);
+        cout << "Число " << listOfNumbersOnText[arrIndex].chNumber <<
+          " нельзя повторить 4 раза!!" << endl;
+        cout << "Диапазон возможных значений: [1 .. 3999]" << endl << endl;
+        digit = false;
+
+      }
+    }
+  }
+  return digit;
+}
+bool verificationOfTheEnteredArabicDigit(string arabicNumber){
+    bool digit = true; 
+    listOfRomanNumeralWithManyCharacter();
+    vector <char> numbers = {'0','1','2','3','4','5','6','7','8','9'};
+    int arrSize=0;
+    for (int character = 0; arabicNumber[character]; ++character) {
+      for (int arrIndex = 0; arrIndex < numbers.size(); ++arrIndex) {
+          if (arabicNumber[character] == numbers[arrIndex]){
+              ++arrSize;                
+          }
+      }
+    if (character == arabicNumber.length()-1 && arrSize != arabicNumber.length()){
+      digit = false;
+      outputAnInvalidArabicNumber(arabicNumber);
+    }
+    }
+    if (stoi(arabicNumber)>3999){
+        digit = false;
+      outputAnInvalidArabicNumber(arabicNumber);
+      cout << "Диапазон возможных значений: [1 .. 3999]" << endl << endl;
+    }
+    return digit;
+}
+int inputMenuItem(){
+    int item;
+    bool menuItem = false;
+    string pointer;
+    cout << "Вводите пункт меню: ";
+    cin >> pointer;
+    while (menuItem == false) {
+      if (pointer == "1" || pointer == "2" || pointer == "3") {
+        item = stoi(pointer);
+        menuItem = true;
+      } else {
+        system("clear");
+        cout << "Выберите правильный пункт меню!" << endl;
+        menu();
+        cout << "Вводите пункт меню: ";
+        cin >> pointer;
+      }
+    }
+    return item;
+}
+void onCase1 (){
+      bool digit;
+      string arabicNumber;
+      system("clear");
+      cout << "\t\t\t\tПреобразование арабских цифр в римские цифры\n\n";
+      arabicNumber =  inputArabic();
+      digit = verificationOfTheEnteredArabicDigit(arabicNumber);
+      while(digit == false){
+        arabicNumber = inputArabic();
+        digit = verificationOfTheEnteredArabicDigit(arabicNumber);
+      }
+      if (digit == true) {
+          convertArabicNumeralsToRomanNumerals(arabicNumber);
+      }  
+}
+void onCase2 (){
+      bool digit;
+      string romanNumeral;
+      system("clear");
+      cout << "\t\t\t\tПреобразование римских цифр в арабские цифры\n\n";
+      romanNumeral = inputRoman();
+      digit = verificationOfTheEnteredRomanDigit(romanNumeral);
+      while (digit == false) {
+        romanNumeral = inputRoman();
+        digit = verificationOfTheEnteredRomanDigit(romanNumeral);
+      }
+      if (digit == true) {
+        convertRomanNumeralsToArabicNumerals(romanNumeral);
+      }
+}
+int main() {
+  bool exit_r_f = false;
+  while (!exit_r_f) {
+    menu();
+    switch (inputMenuItem()) {
+    case 1:
+      onCase1 ();
+      break;
+    case 2:
+      onCase2 ();
+      break;
+    case 3:
+      exit_r_f = true;
+      break;
+    }
+  }
+  return 0;
 }
