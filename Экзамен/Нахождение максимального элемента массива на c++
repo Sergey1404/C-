@@ -1,0 +1,23 @@
+https://onlinegdb.com/4Xx4T9lw_
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n, max;
+	cout << "Введите размер: ";
+	cin >> n;
+	int mass[n];
+	cout << "Введите элементы: ";
+	for (int i = 0; i < n; ++i) {
+        cin >> mass[i];
+    }
+    max = mass[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (max < mass[i]) {
+		    max = mass[i];
+		}
+	}
+	cout << "Максимум: " << max << endl;
+	return 0;
+}
