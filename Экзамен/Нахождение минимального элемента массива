@@ -1,0 +1,23 @@
+https://onlinegdb.com/2zSj62OWO
+#include <iostream>
+using namespace std;
+int main()
+{
+	int n, min;
+	cout << "Введите размер: ";
+	cin >> n;
+	int mass[n];
+	cout << "Введите элементы: ";
+	for (int i = 0; i < n; ++i) {
+        cin >> mass[i];
+    }
+    min = mass[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (min > mass[i]) {
+		    min = mass[i];
+		}
+	}
+	cout << "Минимум: " << min << endl;
+	return 0;
+}
