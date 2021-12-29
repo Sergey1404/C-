@@ -1,0 +1,35 @@
+https://onlinegdb.com/A2xjYblQs
+#include <iostream>
+using namespace std;
+int main()
+{
+	/* Заполним массив значениями */
+	int n;
+	cout << "Введите размер: ";
+	cin >> n;
+	int mass[n];
+	cout << "Введите элементы: ";
+	    for (int i = 0; i < n; ++i) {
+        cin >> mass[i];
+    }
+	/* Создадим переменные для хранения суммы и произведения */
+	int sumValue = 0; // Сумма
+	int proValue = 1; // Произведение (по умолчанию 1)
+	cout << endl << "Массив = ";
+	/* Проходим по всем элементам массива */
+	for (int i = 0; i < n; ++i) {
+		// Вынесем текущий элемент в переменную
+		int currentElementValue = mass[i];
+		// Сразу выведем его
+		cout << currentElementValue << " ";
+		// Пересчитываем сумму элементов массива с текущим значением
+		sumValue = sumValue + currentElementValue;
+		// Пересчитываем произведение элементов массива с текущим значением
+		// Если бы по умолчанию proValue был не 1, а 0, то так сделать нельзя было бы
+		// т.к. был бы всегда 0 при умножениях.
+		proValue = proValue * currentElementValue;
+	}
+	cout << endl << "Сумма элементов массива = " << sumValue;
+	cout << endl << "Произведение элементов массива = " << proValue;
+	return 0;
+}
