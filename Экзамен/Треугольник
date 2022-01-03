@@ -1,0 +1,18 @@
+https://onlinegdb.com/VVT4b8Z0g
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main() {
+    double S, p, a, b, c;
+    cout << "Введите a,b,c: ";
+    cin >> a >> b >> c;
+    if (a > b + c || b > a + c || c > a + b) { 
+        cout << "Не получится" << endl;
+    }
+    else {
+        p = (a + b + c) / 2;
+        S = sqrt(p * (p - a) * (p - b) * (p - c));
+        cout << "Площадь треугольника равна: " << S << endl;
+    }
+    return 0;
+}
