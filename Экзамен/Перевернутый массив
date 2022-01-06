@@ -1,0 +1,31 @@
+https://onlinegdb.com/q6yvlj6Sv
+#include <iostream>
+using namespace std;
+int main() {
+    int arr[100], size, i, j, temp;
+    cout << "Введите размер: ";
+    cin >> size;
+    cout << "Введите элементы: ";
+    for (i = 0; i < size; i++) {
+        cin >> arr[i];
+    }
+    cout << "Введенные элементы: ";
+    for (i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    j = i-1;  // j указывает на последний элемент, а i указывает на первый элемент
+    i = 0;     
+    while (i < j) {
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        i++;
+        j--;
+    }
+    cout << endl;
+    cout << "Перевернутый массив: ";
+    for (i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    return 0;
+}
