@@ -1,0 +1,50 @@
+https://onlinegdb.com/jZFTun8bo
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+int main () {
+   setlocale (LC_ALL, "Russian");
+    int razmer;
+    int array [100][100];
+    cout << "Введите размерность матрицы -> ";
+    cin >> razmer;
+    cout << "Исходная матрица размерностью : " << razmer << 'x' << razmer << endl;
+    cout << endl;
+    srand ((signed) time (NULL));         // стартовая точка при генерации случайных чисел, значения функции рандома
+    for (int i = 0; i < razmer; i++) {            // строка
+        for (int j = 0; j < razmer; j++) {       // столбец
+            array [i][j] = rand() %100;     // остаток от деления на 100 (для работы с меньшими числами)
+        }
+    }
+    for (int i=0; i < razmer; i++) {           //вывод матрицы
+        for (int j=0; j < razmer; j++) {      
+            cout << array [i][j] << '\t';   
+        }
+        cout << endl << endl;
+    }
+    int imax(0),jmax(0);                      //поиск максимального элемента матрицы
+    array [imax][jmax] = array [0][0];
+    for (int i = 0; i < razmer; i++) {
+        for (int j = 0; j < razmer; j++) {                
+            if (array [i][j] > array [imax][jmax]) {
+                array [imax][jmax] = array [i][j];
+            }
+        }
+    }
+    cout << "Максимальный элемент -> "<< array [imax][jmax] << endl;
+    cout << endl;
+    cout << "Преобразованная матрица" << endl;
+    cout << endl;
+    int max = array [imax][jmax];
+    for (int i = 1; i < razmer; i++) {
+        array[i][i] = max;
+    }
+    for (int i = 0; i < razmer; i++) {
+        for (int j = 0; j < razmer; j++) {          
+            cout << array [i][j] << '\t';
+        }
+        cout << endl << endl;
+    }
+    return 0;
+}
