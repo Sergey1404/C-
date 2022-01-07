@@ -1,0 +1,27 @@
+https://onlinegdb.com/xnS1X0z7x
+#include <iostream>
+using namespace std;
+int main() {
+   setlocale(0, "");
+    int T, i, j;
+    cout << "Введите количество строк и столбцов "; 
+    cin >> T;
+    int MKA[T][T];
+    int sum[T];
+    for (i=0; i<T; i++) {
+       for (j=0; j<T; j++) {
+           cout << "MKA["<<i<<"]["<<j<<"]=";
+           cin >> MKA[i][j];
+        }
+        sum[i]=0;
+    }
+    for (j=0; j<T; j++) {
+       for (i=0; i<T; i++) {
+           if (MKA[i][j]<0) {
+               sum[j] += MKA[i][j];
+            }
+        }
+        cout << "Сумма отриц. эллементов столбца: " << sum[j] << "\n";
+    }
+    return 0;
+}
