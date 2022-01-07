@@ -1,0 +1,11 @@
+https://onlinegdb.com/IQoL7dCRE
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+    string surn, name, patro;
+    cout << "ФИО: ";
+    cin >> surn >> name >> patro;
+    cout << surn << " " << name[0] << "." << patro[0] << ".";
+    return 0;
+}
