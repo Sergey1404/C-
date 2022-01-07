@@ -1,0 +1,31 @@
+https://onlinegdb.com/WbIIrvvmH
+#include <iostream>
+#include <ctime>
+using namespace std;
+int main() {
+    setlocale(LC_ALL,"Russian");
+    srand(static_cast<int>(time(NULL)));
+    int **mat;
+    int M, sumgl = 0, sumpob = 0;
+    cout << "Введите количество строк и столбцов: ";
+    cin >> M;
+    mat = new int*[M];
+    cout << "Матрица: " << endl;
+    for (int i = 0; i < M; i++) {
+        mat[i] = new int[M];
+            for (int j = 0; j < M; j++) {
+                mat[i][j] = rand()%9;
+                cout << mat[i][j] << "  ";
+                if (i==j) {
+                    sumgl += mat[i][j];
+                }
+                if (i + j == M - 1) {
+                    sumpob += mat[i][j];
+                }
+            }
+       cout << endl;
+   }
+   cout << "Сумма элементов главной диагонали -> " << sumgl << endl;
+   cout << "Сумма элементов побочной диагонали -> " << sumpob << endl;
+   return 0;
+}
