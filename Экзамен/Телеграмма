@@ -1,0 +1,14 @@
+https://onlinegdb.com/JVp-dJhoX
+#include <string>
+#include <iostream>
+using namespace std;
+int main () {
+    string Text;
+    std::cout << "Введите текст телеграммы " << std::endl;
+    getline(cin,Text);
+    double Price, summ; 
+    cout << "Цена одной буквы (руб) ";
+    cin >> Price;
+    summ = Text.size() * Price;
+    cout << "Стоимость телеграммы= "<< summ << " Рублей";
+}
