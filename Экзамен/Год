@@ -1,0 +1,15 @@
+https://onlinegdb.com/Fs3q6A3IH
+#include <iostream>
+using namespace std;
+int main () {
+    int year;
+    cout << "Введите год: ";
+    cin >> year;
+    if ((year%4==0 && (year%100!=0)) || (year%400==0)) {
+        cout << "Високосный";
+    }
+    else {
+        cout << "Невисокосный";
+    }
+    return 0;
+}
