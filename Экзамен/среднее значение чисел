@@ -1,0 +1,37 @@
+https://onlinegdb.com/l62ytMqDQ
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+int main() {
+    srand(static_cast<unsigned>(time(NULL)));
+    int m;
+    std::cout << "Введите количество строк ";
+    std::cin >> m;
+    int n;
+    int**a;
+    std::cout << "Введите количество столбцов ";
+    std::cin >> n;
+    a = new int*[n];
+    for (int i = 0; i < n; ++i) {
+       a[i] = new int[m];
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            a[i][j] = 1 + rand()%100;
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            std::cout << a[i][j] << ' ';
+        }
+        std::cout << '\n';
+    }
+    for (int j = 0; j < m; ++j) {
+        int sum = 0;
+        for (int i = 0; i < n; ++i) {
+            sum += a[i][j];
+        }
+        std::cout<<"Среднее арифметическое "<< j+1 <<"-го столбца равно: " << static_cast<double>(sum)/n << '\n';
+    }
+    return 0;
+}
