@@ -1,12 +1,10 @@
-https://onlinegdb.com/tbqBLa2DR
+https://onlinegdb.com/0LlykmD-Q
 #include <iostream>
 using namespace std;
-int main()
-{
+int main() {
     int x[4], y[4];                 //здесь будем держать координаты х и у
     double xc[2], yc[2];            //десь координаты средин
-    for (int i = 0; i < 4; i++)     //заполняем значениями вершин по порядку
-    {
+    for (int i = 0; i < 4; i++) {    //заполняем значениями вершин по порядку
         cout << "x" << i + 1 << " = ";
         cin >> x[i];
         cout << "y" << i + 1 << " = ";
@@ -17,9 +15,10 @@ int main()
     xc[1] = (double)(x[1] + x[3]) / 2;
     yc[0] = (double)(y[0] + y[2]) / 2;
     yc[1] = (double)(y[1] + y[3]) / 2;
-    if (xc[0] == xc[1] && yc[0] == yc[1])
+    if (xc[0] == xc[1] && yc[0] == yc[1]) {
         cout << "Это параллелограм" << endl;
-    else
+    } else {
         cout << "Это не параллелограм" << endl;
+    }
     return 0;
 }
