@@ -1,8 +1,7 @@
 https://onlinegdb.com/2zSj62OWO
 #include <iostream>
 using namespace std;
-int main()
-{
+int main() {
 	int n, min;
 	cout << "Введите размер: ";
 	cin >> n;
@@ -12,8 +11,7 @@ int main()
         cin >> mass[i];
     }
     min = mass[0];
-	for (int i = 1; i < n; i++)
-	{
+	for (int i = 1; i < n; i++) {
 		if (min > mass[i]) {
 		    min = mass[i];
 		}
