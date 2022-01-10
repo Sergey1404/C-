@@ -1,8 +1,7 @@
 https://onlinegdb.com/4Xx4T9lw_
 #include <iostream>
 using namespace std;
-int main()
-{
+int main() {
 	int n, max;
 	cout << "Введите размер: ";
 	cin >> n;
@@ -12,8 +11,7 @@ int main()
         cin >> mass[i];
     }
     max = mass[0];
-	for (int i = 1; i < n; i++)
-	{
+	for (int i = 1; i < n; i++) {
 		if (max < mass[i]) {
 		    max = mass[i];
 		}
